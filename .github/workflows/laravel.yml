@@ -15,7 +15,17 @@ jobs:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
         php-version: '8.0'
-    - uses: actions/checkout@v4
+    - name: Checkout code 
+      uses: actions/checkout@v4
+    - name: TruffleHog OSS
+      uses: trufflesecurity/trufflehog@v3.88.30
+      continue-on-error: true 
+      with: 
+        path: ./ 
+        base: "${{ github.event.repository.default_branch }}" 
+        head: HEAD 
+        extra_args: --debug --only-verified ﻿
+          
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Install Dependencies

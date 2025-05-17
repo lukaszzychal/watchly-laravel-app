@@ -1,0 +1,74 @@
+{
+    "movies": [
+        {
+            "Title": "The Lion King",
+            "Year": "2019",
+            "Country": "USA",
+            "Description": "A spectacular photorealistic remake of Disney’s classic. Young lion Simba embarks on a journey to reclaim his rightful place as king of the jungle.",
+            "Genre": ["Animation", "Adventure", "Drama"],
+            "Release Date": "2019-07-19",
+            "Rating": 6.8,
+            "Duration": "118 min",
+            "Actors": ["Donald Glover", "Beyoncé", "Chiwetel Ejiofor"],
+            "Director": "Jon Favreau",
+            "Writer": "Jeff Nathanson (screenplay), Brenda Chapman (story), Irene Mecchi (based on 1994 screenplay)",
+            "Poster": "https://m.media-amazon.com/images/M/MV5BMjIwMjE1Nzc4NV5BMl5BanBnXkFtZTgwNDg4OTA1NzM@._V1_SX300.jpg"
+        },
+        {
+            "Title": "Mowgli: Legend of the Jungle",
+            "Year": "2018",
+            "Country": "UK",
+            "Description": "Torn between two worlds, Mowgli must accept his destiny and face a dangerous enemy to protect his jungle family.",
+            "Genre": ["Adventure", "Drama", "Fantasy"],
+            "Release Date": "2018-12-07",
+            "Rating": 6.5,
+            "Duration": "104 min",
+            "Actors": ["Rohan Chand", "Christian Bale", "Cate Blanchett"],
+            "Director": "Andy Serkis",
+            "Writer": "Callie Kloves (screenplay), Rudyard Kipling (based on the stories)",
+            "Poster": "https://m.media-amazon.com/images/M/MV5BMjMzODc2NzU5MV5BMl5BanBnXkFtZTgwNTMwMTE3NjM@._V1_SX300.jpg"
+        },
+        {
+            "Title": "Doctor Strange",
+            "Year": "2016",
+            "Country": "USA",
+            "Description": "After a tragic accident, a brilliant surgeon discovers the hidden world of magic and alternate dimensions.",
+            "Genre": ["Action", "Adventure", "Fantasy"],
+            "Release Date": "2016-11-04",
+            "Rating": 7.5,
+            "Duration": "115 min",
+            "Actors": ["Benedict Cumberbatch", "Chiwetel Ejiofor", "Rachel McAdams"],
+            "Director": "Scott Derrickson",
+            "Writer": "Jon Spaihts, Scott Derrickson, C. Robert Cargill",
+            "Poster": "https://m.media-amazon.com/images/M/MV5BNjgwNzAzNjk1Nl5BMl5BanBnXkFtZTgwMzQ2NjI1OTE@._V1_SX300.jpg"
+        },
+        {
+            "Title": "John Wick",
+            "Year": "2014",
+            "Country": "USA",
+            "Description": "An ex-hitman comes out of retirement to track down the gangsters that killed his dog and took everything from him.",
+            "Genre": ["Action", "Crime", "Thriller"],
+            "Release Date": "2014-10-24",
+            "Rating": 7.4,
+            "Duration": "101 min",
+            "Actors": ["Keanu Reeves", "Michael Nyqvist", "Alfie Allen"],
+            "Director": "Chad Stahelski",
+            "Writer": "Derek Kolstad",
+            "Poster": "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_SX300.jpg"
+        },
+        {
+            "Title": "The Notebook",
+            "Year": "2004",
+            "Country": "USA",
+            "Description": "A young couple falls in love in the 1940s but are soon separated by war and social differences.",
+            "Genre": ["Drama", "Romance"],
+            "Release Date": "2004-06-25",
+            "Rating": 7.8,
+            "Duration": "123 min",
+            "Actors": ["Ryan Gosling", "Rachel McAdams", "James Garner"],
+            "Director": "Nick Cassavetes",
+            "Writer": "Jeremy Leven (screenplay), Jan Sardi (adaptation), Nicholas Sparks (novel)",
+            "Poster": "https://m.media-amazon.com/images/I/71u05W2FjOL._AC_UF894,1000_QL80_.jpg"
+        }
+    ]
+}

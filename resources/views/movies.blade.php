@@ -2,5 +2,5 @@
     <x-slot:title>
         Movies
     </x-slot:title>
-    <h1>Movies Page</h1>
+    <x-movies-list :movies="$movies" ></x-movies-list>
 </x-layout>

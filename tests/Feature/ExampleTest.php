@@ -9,12 +9,12 @@ test('the application returns a successful response in the test', function () {
     $response->assertStatus(200);
 });
 
-//test('the application returns a successful response in the home page', function () {
-//    $this->withoutExceptionHandling();
-//   $response = get('/');
-//    $response->assertStatus(200);
-//});
-//
+test('the application returns a successful response in the home page', function () {
+    $this->withoutExceptionHandling();
+   $response = get('/');
+    $response->assertStatus(200);
+});
+
 //test('the application returns a successful response in the movies page', function () {
 //    $this->withoutExceptionHandling();
 //    get('/movies')->assertStatus(200);

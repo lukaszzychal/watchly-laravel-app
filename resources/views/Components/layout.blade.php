@@ -22,7 +22,7 @@
                                  alt="Your Company">
                         </a>
                     </div>
-                    <x-menu></x-menu>
+{{--                    <x-menu></x-menu>--}}
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-4 flex items-center md:ml-6">
@@ -59,7 +59,7 @@
 
         <!-- mobile menu, show/hide based on menu state. -->
         <div class="md:hidden" id="mobile-menu">
-            <x-mobile.mobile_menu></x-mobile.mobile_menu>
+{{--            <x-mobile.mobile_menu></x-mobile.mobile_menu>--}}
             <div class="border-t border-gray-700 pt-4 pb-3">
                 <div class="flex items-center px-5">
                     {{--                <x-mobile.mobile_profile></x-mobile_profile>--}}
@@ -69,7 +69,7 @@
             </div>
         </div>
     </nav>
-    <x-header :title="$title"></x-header>
+{{--    <x-header :title="$title"></x-header>--}}
     <main>
         <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
             {{ $slot }}

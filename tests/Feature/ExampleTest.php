@@ -13,7 +13,7 @@ use function Pest\Laravel\get;
 test('the application returns a successful response in the home page', function () {
     $this->withoutExceptionHandling();
    $response = get('/');
-    $response->dd();
+
     $response->assertStatus(200);
 });
 

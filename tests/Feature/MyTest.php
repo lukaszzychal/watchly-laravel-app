@@ -8,7 +8,7 @@ use Tests\TestCase;
 
 class MyTest extends TestCase
 {
-    public function testMy(): void
+    public function testMy3(): void
     {
         $this->assertTrue(true);
    }

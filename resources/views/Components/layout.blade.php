@@ -1,3 +1,7 @@
+<div>
+    body content
+</div>
+
 {{--<!doctype html>--}}
 {{--<html lang="en">--}}
 {{--<head>--}}

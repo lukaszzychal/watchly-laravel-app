@@ -1,5 +1,5 @@
 <div>
-    body content
+    body content 2
 </div>
 
 {{--<!doctype html>--}}

@@ -7,4 +7,4 @@
 {{--    </div>--}}
 {{--</x-layout>--}}
 
-<x-lay> </x-lay>
+<x-lay> Hi </x-lay>

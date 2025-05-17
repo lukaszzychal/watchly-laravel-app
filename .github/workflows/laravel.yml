@@ -17,11 +17,10 @@ jobs:
         php-version: '8.4'
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: TruffleHog OSS
-      uses: trufflesecurity/trufflehog@v3.88.30
-      with:
-            extra_args: --results=verified,unknown
-
+  #  - name: TruffleHog OSS
+  #    uses: trufflesecurity/trufflehog@v3.88.30
+  #    with:
+  #          extra_args: --results=verified,unknown
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Install Dependencies

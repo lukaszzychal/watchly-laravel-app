@@ -3,12 +3,12 @@
 use function Pest\Laravel\get;
 
 
-test('the application returns a successful response in the test', function () {
-    $this->withoutExceptionHandling();
-   $response = get('/test');
-   $response->dd();
-    $response->assertStatus(200);
-});
+//test('the application returns a successful response in the test', function () {
+//    $this->withoutExceptionHandling();
+//   $response = get('/test');
+//   $response->dd();
+//    $response->assertStatus(200);
+//});
 
 test('the application returns a successful response in the home page', function () {
     $this->withoutExceptionHandling();

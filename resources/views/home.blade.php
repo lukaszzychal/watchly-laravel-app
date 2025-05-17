@@ -7,11 +7,4 @@
 {{--    </div>--}}
 {{--</x-layout>--}}
 
-<html>
-<head>
-    <title>Home</title>
-</head>
-<body>
-    <h1>Home</h1>
-</body>
-</html>
+<x-lay></x-lay>

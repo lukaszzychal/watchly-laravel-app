@@ -19,8 +19,6 @@ jobs:
       uses: actions/checkout@v4
     - name: TruffleHog OSS
       uses: trufflesecurity/trufflehog@v3.88.30
-      with: 
-        extra_args: --debug --only-verified ﻿
           
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"

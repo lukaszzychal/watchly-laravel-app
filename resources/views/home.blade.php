@@ -7,4 +7,4 @@
 {{--    </div>--}}
 {{--</x-layout>--}}
 
-<x-layout></x-layout>
+<x-lay> </x-lay>

@@ -10,15 +10,15 @@ Route::get('/movies', function () {
     return view('movies');
 });
 
-Route::get('/series', function () {
-    return view('series');
-});
-
-Route::get('/cinema', function () {
-    return view('cinema');
-});
-
-Route::get('/tv', function() {
-   return view('tv');
-});
+//Route::get('/series', function () {
+//    return view('series');
+//});
+//
+//Route::get('/cinema', function () {
+//    return view('cinema');
+//});
+//
+//Route::get('/tv', function() {
+//   return view('tv');
+//});
 

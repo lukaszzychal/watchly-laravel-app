@@ -2,7 +2,5 @@
     <x-slot:title>
         Movies
     </x-slot:title>
-    <div>
-        movies content
-    </div>
+    <h1>Movies Page</h1>
 </x-layout>

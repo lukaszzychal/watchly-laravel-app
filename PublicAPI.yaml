@@ -1,0 +1,547 @@
+# PublicAPI.yaml
+openapi: 3.0.3
+info:
+  title: TV Portal Public API
+  version: 1.0.0
+servers:
+  - url: http://localhost/v1
+paths:
+  /epg:
+    get:
+      summary: Pobierz program TV
+      description: Zwraca listę emisji dla podanego dnia/kanału
+      parameters:
+        - in: query
+          name: date
+          schema:
+            type: string
+            format: date
+          required: true
+          description: Data w formacie YYYY-MM-DD
+          examples:
+            example1:
+              summary: Przykładowa data
+              value: "2025-08-18"
+        - in: query
+          name: channel
+          schema:
+            type: string
+          description: Identyfikator kanału
+          examples:
+            example1:
+              summary: Przykładowy kanał
+              value: "tvp1"
+      responses:
+        "200":
+          description: Lista emisji
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Emission"
+              examples:
+                example1:
+                  summary: Przykładowa lista emisji
+                  value:
+                    - id: "em_10001"
+                      channel: "tvp1"
+                      start: "2025-08-18T20:00:00Z"
+                      end: "2025-08-18T21:45:00Z"
+                      titleId: "tt_2001"
+                      episodeTitle: "Odcinek 3"
+                    - id: "em_10002"
+                      channel: "tvp1"
+                      start: "2025-08-18T21:45:00Z"
+                      end: "2025-08-18T22:15:00Z"
+                      titleId: null
+                      episodeTitle: "Wiadomości"
+        "401":
+          description: Unauthorized – brak lub niepoprawny token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Unauthorized"
+        "403":
+          description: Forbidden – brak dostępu
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Forbidden"
+        "422":
+          description: Validation Error – błąd walidacji parametrów
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Validation failed"
+                  details:
+                    type: array
+                    items:
+                      type: string
+
+  /titles/{id}:
+    get:
+      summary: Szczegóły tytułu (film/serial)
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          examples:
+            example1:
+              summary: Przykładowe id tytułu
+              value: "tt_2001"
+      responses:
+        "200":
+          description: Szczegóły filmu/serialu
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Title"
+              examples:
+                example1:
+                  summary: Przykładowe szczegóły tytułu
+                  value:
+                    id: "tt_2001"
+                    type: "show"
+                    name: "Dom z papieru"
+                    year: 2017
+                    genres: ["Crime", "Thriller"]
+                    posterUrl: "https://cdn.tvportal.pl/posters/tt_2001.jpg"
+                    description: "Grupa złodziei napada na Hiszpańską Mennicę."
+                    seasons:
+                      - seasonNumber: 1
+                        episodes: 13
+                      - seasonNumber: 2
+                        episodes: 9
+        "401":
+          description: Unauthorized – brak tokena lub niepoprawny token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Unauthorized"
+        "403":
+          description: Forbidden – brak uprawnień
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Forbidden"
+        "404":
+          description: Not Found – nie znaleziono tytułu
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Not Found"
+
+  /search:
+    get:
+      summary: Wyszukiwanie filmów, seriali i osób
+      parameters:
+        - in: query
+          name: q
+          required: true
+          schema:
+            type: string
+          examples:
+            example1:
+              summary: Przykładowe zapytanie
+              value: "dom"
+      responses:
+        "200":
+          description: Wyniki wyszukiwania
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/SearchResult"
+              examples:
+                example1:
+                  summary: Przykładowe wyniki wyszukiwania
+                  value:
+                    results:
+                      - type: "title"
+                        id: "tt_2001"
+                        name: "Dom z papieru"
+                        posterUrl: "https://cdn.tvportal.pl/posters/tt_2001.jpg"
+                      - type: "person"
+                        id: "pe_503"
+                        name: "Pedro Alonso"
+                        posterUrl: "https://cdn.tvportal.pl/people/pe_503.jpg"
+                      - type: "channel"
+                        id: "tvp1"
+                        name: "TVP 1"
+                        posterUrl: null
+        "401":
+          description: Unauthorized – brak tokena lub niepoprawny token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Unauthorized"
+        "422":
+          description: Validation Error – błędne parametry
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Validation failed"
+                  details:
+                    type: array
+                    items:
+                      type: string
+
+  /titles/{id}/ratings:
+    post:
+      summary: Dodaj ocenę
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          examples:
+            example1:
+              summary: Przykładowe ID tytułu
+              value: "tt_2001"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: integer
+                  minimum: 1
+                  maximum: 10
+            examples:
+              example1:
+                summary: Przykładowa ocena
+                value:
+                  value: 9
+      responses:
+        "201":
+          description: Ocena dodana
+          content:
+            application/json:
+              examples:
+                example1:
+                  summary: Potwierdzenie dodania oceny
+                  value:
+                    message: "Ocena dodana"
+        "401":
+          description: Unauthorized – brak tokena lub niepoprawny token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Unauthorized"
+        "403":
+          description: Forbidden – brak uprawnień
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Forbidden"
+        "422":
+          description: Validation Error – błędne dane
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Validation failed"
+                  details:
+                    type: array
+                    items:
+                      type: string
+    get:
+      summary: Pobierz średnią ocenę i liczbę głosów
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          examples:
+            example1:
+              summary: Przykładowe ID tytułu
+              value: "tt_2001"
+      responses:
+        "200":
+          description: Oceny
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  average:
+                    type: number
+                    format: float
+                  votes:
+                    type: integer
+              examples:
+                example1:
+                  summary: Przykładowe oceny
+                  value:
+                    average: 8.5
+                    votes: 1452
+        "401":
+          description: Unauthorized – brak tokena lub niepoprawny token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Unauthorized"
+        "404":
+          description: Not Found – nie znaleziono tytułu
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Not Found"
+
+  /titles/{id}/comments:
+    get:
+      summary: Pobierz komentarze do tytułu
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          examples:
+            example1:
+              summary: Przykładowe ID tytułu
+              value: "tt_2001"
+      responses:
+        "200":
+          description: Komentarze
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+              examples:
+                example1:
+                  summary: Przykładowe komentarze
+                  value:
+                    - id: "c_789"
+                      user: "janek123"
+                      text: "Świetny serial! Trzyma w napięciu do samego końca."
+                      createdAt: "2025-08-18T18:30:00Z"
+                    - id: "c_790"
+                      user: "kasia92"
+                      text: "Trochę się ciągnie, ale klimat genialny!"
+                      createdAt: "2025-08-18T19:10:00Z"
+        "401":
+          description: Unauthorized – brak tokena lub niepoprawny token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Unauthorized"
+    post:
+      summary: Dodaj komentarz
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          examples:
+            example1:
+              summary: Przykładowe ID tytułu
+              value: "tt_2001"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+            examples:
+              example1:
+                summary: Przykładowy komentarz
+                value:
+                  text: "Świetny serial! Trzyma w napięciu do samego końca."
+      responses:
+        "201":
+          description: Komentarz dodany
+          content:
+            application/json:
+              examples:
+                example1:
+                  summary: Potwierdzenie dodania komentarza
+                  value:
+                    id: "c_789"
+                    user: "janek123"
+                    text: "Świetny serial! Trzyma w napięciu do samego końca."
+                    createdAt: "2025-08-18T18:30:00Z"
+        "401":
+          description: Unauthorized – brak tokena lub niepoprawny token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Unauthorized"
+        "422":
+          description: Validation Error – błędne dane
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Validation failed"
+                  details:
+                    type: array
+                    items:
+                      type: string
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Emission:
+      type: object
+      properties:
+        id:
+          type: string
+        channel:
+          type: string
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        titleId:
+          type: string
+          nullable: true
+        episodeTitle:
+          type: string
+          nullable: true
+
+    Title:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum: [movie, show]
+        name:
+          type: string
+        year:
+          type: integer
+        genres:
+          type: array
+          items:
+            type: string
+        posterUrl:
+          type: string
+          nullable: true
+        description:
+          type: string
+        seasons:
+          type: array
+          items:
+            type: object
+            properties:
+              seasonNumber:
+                type: integer
+              episodes:
+                type: integer
+
+    SearchResult:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: [title, person, channel]
+        id:
+          type: string
+        name:
+          type: string
+        posterUrl:
+          type: string
+          nullable: true
+
+    Comment:
+      type: object
+      properties:
+        id:
+          type: string
+        user:
+          type: string
+        text:
+          type: string
+        createdAt:
+          type: string
+          format: date-time

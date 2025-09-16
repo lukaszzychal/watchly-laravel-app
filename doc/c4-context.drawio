@@ -1,0 +1,50 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="context" name="C4 - Context">
+    <mxGraphModel>
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Użytkownik -->
+        <mxCell id="user" value="User (Użytkownik)" style="shape=actor;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="50" y="200" width="80" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Admin -->
+        <mxCell id="admin" value="Admin (Administrator/Moderator)" style="shape=actor;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="50" y="350" width="120" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Portal WWW -->
+        <mxCell id="portal" value="Web Portal (Portal WWW)" style="shape=rectangle;rounded=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="300" y="200" width="160" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Admin Panel -->
+        <mxCell id="adminpanel" value="Admin Panel (Panel Admin)" style="shape=rectangle;rounded=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="300" y="350" width="160" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- External APIs -->
+        <mxCell id="tvmaze" value="TVmaze API" style="shape=ellipse;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="600" y="150" width="100" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="tmdb" value="TMDb API" style="shape=ellipse;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="600" y="250" width="100" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Notifications -->
+        <mxCell id="notif" value="Notifications (Email / Web Push)" style="shape=ellipse;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="600" y="370" width="160" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Connections -->
+        <mxCell id="edge1" edge="1" source="user" target="portal" parent="1"/>
+        <mxCell id="edge2" edge="1" source="admin" target="adminpanel" parent="1"/>
+        <mxCell id="edge3" edge="1" source="portal" target="tvmaze" parent="1"/>
+        <mxCell id="edge4" edge="1" source="portal" target="tmdb" parent="1"/>
+        <mxCell id="edge5" edge="1" source="adminpanel" target="notif" parent="1"/>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

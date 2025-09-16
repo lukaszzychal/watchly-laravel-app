@@ -1,0 +1,47 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="component" name="C4 - Component">
+    <mxGraphModel>
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Components -->
+        <mxCell id="epg" value="EPGImporter" style="shape=rectangle;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="100" y="100" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="tmdb" value="TMDbSync" style="shape=rectangle;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="250" y="100" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="catalog" value="CatalogService" style="shape=rectangle;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="100" y="200" width="140" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="community" value="CommunityService" style="shape=rectangle;rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="250" y="200" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="searchproj" value="SearchProjector" style="shape=rectangle;rounded=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="450" y="100" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="notif" value="NotificationService" style="shape=rectangle;rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="450" y="200" width="160" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="auth" value="Auth & RBAC" style="shape=rectangle;rounded=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="100" y="300" width="140" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="adminapi" value="Admin API" style="shape=rectangle;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="250" y="300" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="publicapi" value="Public API" style="shape=rectangle;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="400" y="300" width="120" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Connections -->
+        <mxCell id="edge1" edge="1" source="epg" target="catalog" parent="1"/>
+        <mxCell id="edge2" edge="1" source="tmdb" target="catalog" parent="1"/>
+        <mxCell id="edge3" edge="1" source="catalog" target="searchproj" parent="1"/>
+        <mxCell id="edge4" edge="1" source="community" target="notif" parent="1"/>
+        <mxCell id="edge5" edge="1" source="auth" target="adminapi" parent="1"/>
+        <mxCell id="edge6" edge="1" source="auth" target="publicapi" parent="1"/>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,65 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="container" name="C4 - Container">
+    <mxGraphModel>
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Web App -->
+        <mxCell id="webapp" value="Web App (Vue.js)" style="shape=rectangle;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="100" y="100" width="140" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- API Backend -->
+        <mxCell id="backend" value="API Backend (Laravel)" style="shape=rectangle;rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="300" y="100" width="160" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Workers -->
+        <mxCell id="workers" value="Workers (Importer, Sync, Notifications)" style="shape=rectangle;rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="500" y="100" width="220" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Database -->
+        <mxCell id="db" value="Database (PostgreSQL)" style="shape=cylinder;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="300" y="250" width="140" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Search -->
+        <mxCell id="search" value="Search (OpenSearch)" style="shape=rectangle;rounded=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="500" y="250" width="140" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Cache -->
+        <mxCell id="cache" value="Cache (Redis)" style="shape=rectangle;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="700" y="250" width="140" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Broker -->
+        <mxCell id="broker" value="Broker (RabbitMQ)" style="shape=ellipse;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="300" y="400" width="140" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Object Storage -->
+        <mxCell id="storage" value="Object Storage (S3/MinIO)" style="shape=rectangle;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="500" y="400" width="160" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Auth -->
+        <mxCell id="auth" value="Auth (Keycloak/Auth0)" style="shape=rectangle;rounded=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="700" y="400" width="160" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Connections -->
+        <mxCell id="edge1" edge="1" source="webapp" target="backend" parent="1"/>
+        <mxCell id="edge2" edge="1" source="backend" target="workers" parent="1"/>
+        <mxCell id="edge3" edge="1" source="backend" target="db" parent="1"/>
+        <mxCell id="edge4" edge="1" source="backend" target="search" parent="1"/>
+        <mxCell id="edge5" edge="1" source="backend" target="cache" parent="1"/>
+        <mxCell id="edge6" edge="1" source="backend" target="broker" parent="1"/>
+        <mxCell id="edge7" edge="1" source="backend" target="storage" parent="1"/>
+        <mxCell id="edge8" edge="1" source="backend" target="auth" parent="1"/>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

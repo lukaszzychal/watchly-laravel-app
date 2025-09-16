@@ -1,0 +1,30 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="code" name="C4 - Code (Laravel Modules)">
+    <mxGraphModel>
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Laravel Modules -->
+        <mxCell id="epg" value="app/EPG" style="shape=folder;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="100" y="100" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="catalog" value="app/Catalog" style="shape=folder;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="250" y="100" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="community" value="app/Community" style="shape=folder;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="400" y="100" width="140" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="search" value="app/Search" style="shape=folder;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="100" y="200" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="identity" value="app/Identity" style="shape=folder;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="250" y="200" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="admin" value="app/Admin" style="shape=folder;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="400" y="200" width="120" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

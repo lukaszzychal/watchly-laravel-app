@@ -116,42 +116,61 @@ Portal dla pasjonatów wideo (**Video Enthusiasts Portal – TV + VOD**) łącz�
 
 ## 5) Architektura i model C4 (C4 Architecture Model)
 
-### C4-1: Context Diagram
-- **User (Użytkownik)** ↔ **Web Portal (Portal WWW)**  
-- **Admin (Administrator/Moderator)** ↔ **Admin Panel (Panel Admin)**  
-- **External APIs:** TVmaze, TMDb  
-- **Notification channels:** Email, Web Push  
+### C4-1: Context Diagram – [📥 Pobierz `c4-context.drawio`](./c4-context.drawio)
+**Aktorzy:**
+- User
+- Admin
 
-### C4-2: Container Diagram
-- **Web App (Nuxt.js / Vue)**  
-- **API Backend (Laravel)**  
-- **Workers (Importer, Sync, Notifications)**  
-- **Database (PostgreSQL)**  
-- **Search (OpenSearch)**  
-- **Cache (Redis)**  
-- **Broker (RabbitMQ)**  
-- **Object Storage (S3/MinIO)**  
-- **Auth (Keycloak/Auth0)**  
+**Systemy:**
+- Web Portal
+- Admin Panel
 
-### C4-3: Component Diagram (Backend API)
-- **EPGImporter**  
-- **TMDbSync**  
-- **CatalogService**  
-- **CommunityService**  
-- **SearchProjector**  
-- **NotificationService**  
-- **Auth & RBAC**  
-- **Admin API**  
-- **Public API**  
+**Zewnętrzne API:**
+- TVmaze
+- TMDb
+
+**Kanały powiadomień:**
+- Email / Web Push
+
+**Granice Bounded Contexts:** zaznaczone wokół EPG, Content, Community, Identity, Admin
+
+---
+
+### C4-2: Container Diagram – [📥 Pobierz `c4-container.drawio`](./c4-container.drawio)
+**Frontend:** Vue.js + SSR/CSR + i18n + OIDC  
+**Backend (Laravel):** BFF/API, REST/GraphQL, Event-driven  
+**Workers:** Import EPG, TMDb sync, Notifications  
+**DB:** PostgreSQL (trwałe dane)  
+**Search:** OpenSearch  
+**Cache:** Redis  
+**Broker:** RabbitMQ  
+**Object Storage:** S3/MinIO  
+**Auth:** Keycloak/Auth0
+
+### C4-3: Component Diagram (Backend API) – [📥 Pobierz `c4-component.drawio`](./c4-component.drawio)
+**EPG Context:**
+- EPGImporter → Agregaty: TVChannel, ScheduleEntry
+
+**Content Context:**
+- CatalogService → Tytuł, Sezon, Odcinek, Person, TMDbSync
+
+**Community Context:**
+- CommunityService → User, Rating, Comment, Report
+
+**Search Context:**
+- SearchProjector → indeksy OpenSearch (Event-driven)
+
+**Notification Context:**
+- NotificationService → Email/Web Push
+
+**Identity & Admin:**
+- Auth & RBAC, Admin API, Public API
 
 
-### C4-4: Code (Laravel Modules)
-- `app/EPG`  
-- `app/Catalog`  
-- `app/Community`  
-- `app/Search`  
-- `app/Identity`  
-- `app/Admin`  
+### C4-4: Code (Laravel Modules) – [📥 Pobierz `c4-code.drawio`](./c4-code.drawio)
+
+- Moduły Laravel: `app/EPG`, `app/Catalog`, `app/Community`, `app/Search`, `app/Identity`, `app/Admin`
+- Wskazanie agregatów, serwisów, eventów, repozytoriów, klienta TVmaze/TMDb
 
 ---
 

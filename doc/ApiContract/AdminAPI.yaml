@@ -1,9 +1,162 @@
-openapi: 3.1.0
+# AdminAPI.yaml
+openapi: 3.0.3
 info:
-  title: $Title$
-  description: $Title$
+  title: TV Portal Admin API
   version: 1.0.0
 servers:
-  - url: '$https$'
+  - url: http://localhost/admin/v1
+security:
+  - bearerAuth: []
 paths:
-  $END$
+  /titles:
+    post:
+      summary: Dodaj/edytuj tytuł ręcznie
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "PublicAPI.yaml#/components/schemas/Title"
+            examples:
+              example1:
+                summary: Przykład dodania tytułu
+                value:
+                  id: "tt_custom1"
+                  type: "movie"
+                  name: "Film festiwalowy"
+                  year: 2025
+                  genres: ["Drama"]
+                  posterUrl: null
+                  description: "Film dodany ręcznie w panelu"
+      responses:
+        "201":
+          description: Tytuł dodany
+          content:
+            application/json:
+              examples:
+                example1:
+                  summary: Potwierdzenie dodania tytułu
+                  value:
+                    message: "Tytuł dodany"
+        "401":
+          description: Unauthorized – brak lub błędny token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Unauthorized"
+        "403":
+          description: Forbidden – brak uprawnień admina
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Forbidden"
+        "422":
+          description: Validation Error – błędne dane
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Validation failed"
+                  details:
+                    type: array
+                    items:
+                      type: string
+
+  /comments/{id}/moderate:
+    post:
+      summary: Moderuj komentarz
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          examples:
+            example1:
+              summary: Przykładowe id komentarza
+              value: "c_789"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: string
+                  enum: [approve, reject, delete, banUser]
+            examples:
+              example1:
+                summary: Przykładowa akcja moderacji - usunięcie
+                value:
+                  action: "delete"
+      responses:
+        "200":
+          description: Zmoderowano komentarz
+          content:
+            application/json:
+              examples:
+                example1:
+                  summary: Potwierdzenie usunięcia komentarza
+                  value:
+                    message: "Komentarz usunięty"
+        "401":
+          description: Unauthorized – brak lub błędny token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Unauthorized"
+        "403":
+          description: Forbidden – brak uprawnień admina
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Forbidden"
+        "404":
+          description: Not Found – nie znaleziono komentarza
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Not Found"
+        "422":
+          description: Validation Error – błędne dane akcji
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Validation failed"
+                  details:
+                    type: array
+                    items:
+                      type: string
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

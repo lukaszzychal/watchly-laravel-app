@@ -116,7 +116,7 @@ Portal dla pasjonatów wideo (**Video Enthusiasts Portal – TV + VOD**) łącz�
 
 ## 5) Architektura i model C4 (C4 Architecture Model)
 
-### C4-1: Context Diagram – [📥 Pobierz `c4-context.drawio`](./doc/c4-context.drawio)
+### C4-1: Context Diagram – [📥 Pobierz `c4-context.drawio`](doc/C4/c4-context.drawio) [📥 Pobierz `c4-context.png`](doc/C4/C4-1-ContextDiagram.png)
 **Aktorzy:**
 - User
 - Admin
@@ -136,7 +136,7 @@ Portal dla pasjonatów wideo (**Video Enthusiasts Portal – TV + VOD**) łącz�
 
 ---
 
-### C4-2: Container Diagram – [📥 Pobierz `c4-container.drawio`](./doc/c4-container.drawio)
+### C4-2: Container Diagram – [📥 Pobierz `c4-container.drawio`](doc/C4/c4-container.drawio)
 **Frontend:** Vue.js + SSR/CSR + i18n + OIDC  
 **Backend (Laravel):** BFF/API, REST/GraphQL, Event-driven  
 **Workers:** Import EPG, TMDb sync, Notifications  
@@ -147,7 +147,7 @@ Portal dla pasjonatów wideo (**Video Enthusiasts Portal – TV + VOD**) łącz�
 **Object Storage:** S3/MinIO  
 **Auth:** Keycloak/Auth0
 
-### C4-3: Component Diagram (Backend API) – [📥 Pobierz `c4-component.drawio`](./doc/c4-component.drawio)
+### C4-3: Component Diagram (Backend API) – [📥 Pobierz `c4-component.drawio`](doc/C4/c4-component.drawio)
 **EPG Context:**
 - EPGImporter → Agregaty: TVChannel, ScheduleEntry
 
@@ -167,7 +167,7 @@ Portal dla pasjonatów wideo (**Video Enthusiasts Portal – TV + VOD**) łącz�
 - Auth & RBAC, Admin API, Public API
 
 
-### C4-4: Code (Laravel Modules) – [📥 Pobierz `c4-code.drawio`](./doc/c4-code.drawio)
+### C4-4: Code (Laravel Modules) – [📥 Pobierz `c4-code.drawio`](doc/C4/c4-code.drawio)
 
 - Moduły Laravel: `app/EPG`, `app/Catalog`, `app/Community`, `app/Search`, `app/Identity`, `app/Admin`
 - Wskazanie agregatów, serwisów, eventów, repozytoriów, klienta TVmaze/TMDb

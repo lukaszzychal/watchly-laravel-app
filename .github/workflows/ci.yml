@@ -39,12 +39,6 @@ jobs:
           touch database/database.sqlite
           php artisan key:generate
 
-      - name: Migrate database
-        run: php artisan migrate --graceful --force
-
-      - name: Run tests
-        run: php artisan test 
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -56,5 +50,11 @@ jobs:
 
       - name: Build assets (Vite)
         run: npm run build
+
+      - name: Migrate database
+        run: php artisan migrate --graceful --force
+
+      - name: Run tests
+        run: php artisan test
 
 

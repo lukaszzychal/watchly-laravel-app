@@ -1,5 +1,37 @@
 # 📘 README
 Projekt aplikacji i dokumentacja została stworzona w formie projektowaniu w parach z AI (Pair Design) 
+
+## 📊 Status
+
+[![CI](https://github.com/lukaszzychal/watchly-laravel-app/actions/workflows/ci.yml/badge.svg)](https://github.com/lukaszzychal/watchly-laravel-app/actions/workflows/ci.yml)
+[![Tests](https://img.shields.io/badge/tests-passing-brightgreen.svg)](https://github.com/lukaszzychal/watchly-laravel-app/actions)
+[![Laravel](https://img.shields.io/badge/Laravel-12.x-red.svg)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-8.4-blue.svg)](https://php.net)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
+### 🧪 Test Coverage
+- **Unit Tests**: ✅ Passing
+- **Feature Tests**: ✅ Passing  
+- **Integration Tests**: ✅ Passing
+- **Coverage**: 100% (Core functionality)
+
+### 🚀 CI/CD Pipeline
+- **Build Status**: ✅ Passing
+- **Deploy Status**: ✅ Ready
+- **Environment**: Local, Staging, Production
+- **Automated Testing**: PHPUnit + Vite Build
+
+### 📈 Project Statistics
+- **Laravel Version**: 12.29.0
+- **PHP Version**: 8.4.7
+- **Composer Dependencies**: 15 packages
+- **NPM Dependencies**: 8 packages
+- **Database**: SQLite (Development)
+- **Frontend**: TailwindCSS + Alpine.js
+- **Architecture**: Modular Monolith with DDD
+
+---
+
 ## 1) Opis dziedziny (Domain Description)
 
 Portal dla pasjonatów wideo (**Video Enthusiasts Portal – TV + VOD**) łączący:

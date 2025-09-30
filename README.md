@@ -1,5 +1,6 @@
 # 📘 README
-Projekt aplikacji i dokumentacja została stworzona w formie projektowaniu w parach z AI (Pair Design) 
+
+Projekt aplikacji i dokumentacja została stworzona przy pomocy Chat GPT po podaniu wymagań
 
 ## 📊 Status
 
